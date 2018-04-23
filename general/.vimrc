@@ -49,6 +49,8 @@ function s:CleanupSpaces()
 endfunction
 
 " Do different things dependig on the file type
+autocmd BufNewFile,BufRead *Makefile   set noexpandtab
+autocmd BufNewFile,BufRead *.gs   set syntax=javascript
 
 " Yaml files
 autocmd FileType yaml call s:YamlStyle()
