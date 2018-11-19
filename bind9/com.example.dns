@@ -1,13 +1,15 @@
 $TTL 68400
-$ORIGIN example.com.
-@           IN  SOA     ns1.example.com. (
+$ORIGIN example.com
+@           IN  SOA     ns1.example.com. www.example.com. (
                             2002022401 ; serial
-                            3H ; refresh
-                            15 ; retry
-                            1w ; expire
-                            3h ; nxdomain ttl
-                        )
+                            10800      ; refresh
+                            15         ; retry
+                            604800     ; expire
+                            604800     ); neg cache ttl
+
             IN  NS      ns1.example.com.
             IN  MX  10  mail.example.com.
 ns1         IN  A       192.168.136.129
 www         IN  A       192.168.136.129
+joe         IN  TXT     "{'test_data': 'test'}"
+mail        IN  A       192.168.136.129
