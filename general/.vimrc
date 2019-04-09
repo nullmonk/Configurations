@@ -32,8 +32,8 @@ set wildignore+=*.ko,*.pyc,*.swp,*.o
 " Syntax highlighting
 " Spaces before a tab
 syn match ErrorMsg / \+\ze\t/
-" 81 Chars or more
-syn match ErrorMsg /\%>80v[^()\{\}\[\]<>]\+/
+" 150 Chars or more
+syn match ErrorMsg /\%>150v[^()\{\}\[\]<>]\+/
 " Whitespace at the end of a line where the cursor isnt
 autocmd InsertEnter * match ErrorMsg /\s\+\%#\@<!$/
 " All whitespace at the end of a line
@@ -63,7 +63,7 @@ endfunction
 
 
 " C Kernel Style guide
-autocmd FileType c,cpp call s:KernelStyleC()
+autocmd FileType c,cpp,h call s:KernelStyleC()
 function s:KernelStyleC()
     " Set tab styles to 8 and use tabs not spaces
     setlocal tabstop=8
@@ -79,4 +79,11 @@ function s:KernelStyleC()
     syn keyword cOperator likely unlikely
     syn keyword cType u8 u16 u32 u64 s8 s16 s32 s64
     syn keyword cType __u8 __u16 __u32 __u64 __s8 __s16 __s32 __s64
+endfunction
+
+" Python files
+autocmd FileType py call s:PythonStyle()
+function s:PythonStyle()
+    " Error 81 Chars or more
+    syn match ErrorMsg /\%>80v[^()\{\}\[\]<>]\+/
 endfunction
